@@ -1,0 +1,129 @@
+@mixin flexCenter($dir: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $dir;
+}
+
+.board {
+  --gridSize: 0;
+  width: 90vh;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: repeat(var(--gridSize), 1fr);
+  grid-auto-rows: 1fr;
+  border-radius: 15px;
+  overflow: hidden;
+  &::before {
+    content: "";
+    width: 0;
+    padding-bottom: 100%;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+  & > *:first-child {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+}
+
+.boardBlocks {
+  @include flexCenter();
+  padding: 8px;
+  padding-bottom: 5px;
+  background-color: white;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  // border: 1px solid black;
+  overflow: hidden;
+  cursor: pointer;
+  // position: relative;
+  p {
+    width: 100%;
+    justify-self: flex-end;
+    align-self: flex-end;
+    text-align: right;
+  }
+  .queen {
+    display: none;
+    opacity: 0;
+  }
+  // transition: 0.2s ease-in-out;
+  // transition: 0.05s ease-in-out outline;
+
+  &:hover {
+    // animation: puls 800ms ease-in-out infinite;
+    outline: 5px solid #1c86ff;
+    z-index: 5;
+  }
+}
+
+.oddBlock {
+  background-color: white;
+  color: var(--primColor);
+  // color: #aa00ff;
+}
+.evenBlock {
+  // background-color: #aa00ff;
+  background-color: var(--primColor);
+  color: white;
+}
+.queenPlaceFaild {
+  animation: checkQFalse 500ms forwards;
+}
+
+.quineBlock {
+  // background-color: #1c86ff;
+  background-color: #1cacff;
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+  padding-bottom: 3px;
+  .queen {
+    display: block;
+    opacity: 1;
+  }
+  animation: checkQTrue 800ms forwards;
+}
+
+.queen {
+  position: absolute;
+  margin: auto;
+  // size: 80%;
+}
+
+@keyframes checkQTrue {
+  0% {
+    background-color: rgb(238, 238, 66);
+  }
+  20% {
+    background-color: rgb(238, 238, 66);
+  }
+  50% {
+    background-color: rgb(31, 231, 31);
+  }
+  80% {
+    background-color: rgb(31, 231, 31);
+  }
+}
+@keyframes checkQFalse {
+  0% {
+    background-color: rgb(238, 238, 66);
+  }
+  25% {
+    background-color: rgb(238, 238, 66);
+  }
+  50% {
+    background-color: rgb(238, 81, 81);
+  }
+}
+
+@keyframes puls {
+  from {
+    outline: 0px solid #1c86ff;
+  }
+  to {
+    outline: 8px solid #1c86ff17;
+  }
+}
