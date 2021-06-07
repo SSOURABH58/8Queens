@@ -44,31 +44,76 @@
   .queensCont {
     @include flexCenter();
     width: 90%;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: inherit;
     padding: 20px 0;
   }
   .queenBlock {
-    @include flexCenter();
-    padding: 2%;
-    // padding-bottom: 5px;
-    background-color: var(--primColor);
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
+    @include flexCenter(column);
 
-    // height: initial;
-    // border: 1px solid black;
-    // overflow: hidden;
-    // cursor: pointer;
-    // position: relative;
-    // opacity: 0.5;
-    border-radius: 1em;
+    // padding-bottom: 5px;
+
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 10px;
+
+    .queen {
+      height: 12vh;
+      width: 12vh;
+      background-color: white;
+      color: var(--primColor);
+      padding: 12px;
+      border-radius: 10px;
+      flex-grow: 1;
+      margin-bottom: 8px;
+    }
+
     p {
       width: 100%;
       justify-self: flex-end;
       align-self: flex-end;
-      text-align: right;
+      text-align: center;
+    }
+  }
+
+  .itrData {
+    margin-bottom: auto;
+    @include flexCenter(column);
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 24px;
+    font-weight: 900;
+    padding-left: 20px;
+    height: max-content;
+    margin-left: 10px;
+
+    .title {
+      font-size: 16px;
+      opacity: 0.7;
+    }
+  }
+
+  .social {
+    @include flexCenter(column);
+    justify-self: flex-end;
+    // justify-content: space-around;
+    margin-bottom: auto;
+    margin-left: auto;
+    .btn {
+      background-color: white;
+      color: var(--primColor);
+      padding: 5px 10px;
+      border-radius: 1rem;
+      width: 100%;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      opacity: 0.7;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
@@ -83,7 +128,7 @@
       overflow: hidden;
       @include flexCenter();
       height: 2.5rem;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 900;
       // padding: 5px 5px;
       width: 20%;
@@ -97,6 +142,7 @@
       transition: 0.2s ease-in-out;
       &:hover {
         // letter-spacing: 2px;
+        opacity: 0.7;
       }
       &:active {
         opacity: 0.5;
@@ -109,7 +155,7 @@
       cursor: pointer;
       padding: 5px;
       font-weight: 500;
-      font-size: 24px;
+      font-size: 20px;
       -webkit-appearance: none;
       -moz-appearance: none;
       &::-ms-expand {
@@ -190,6 +236,10 @@
         // &:hover {
         //   opacity: 1; /* Fully shown on mouse-over */
         // }
+        // &::-webkit-slider-runnable-track {
+        //   background: rgb(165, 39, 39);
+        //   border-radius: 10px;
+        // }
 
         &::-webkit-slider-thumb {
           -webkit-appearance: none;
@@ -205,6 +255,7 @@
             height: 25px;
           }
         }
+
         // &::-moz-range-thumb {
         //   width: 25px;
         //   height: 25px;
@@ -230,6 +281,10 @@
         margin: 0 10px;
         padding: 15px;
         border-radius: 35px;
+        &:hover {
+          // letter-spacing: 2px;
+          opacity: 0.7;
+        }
         // opacity: 0.7;
       }
       .btnplay {
@@ -241,6 +296,7 @@
           display: none;
         }
         &:hover {
+          opacity: 1;
           &:before {
             content: "";
             display: block;
@@ -256,6 +312,9 @@
             border-radius: 50%;
             animation: pulse-border 1500ms ease-out infinite;
           }
+        }
+        .btnplayicon {
+          z-index: 5;
         }
       }
     }
@@ -275,6 +334,30 @@
       }
     }
   }
+}
+
+.timeCont {
+  @include flexCenter();
+  width: 100%;
+  justify-content: space-between;
+  .time {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+.speedvals {
+  width: 5em;
+  margin: 0 15px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.footer {
+  // width: 80%;
+  opacity: 0.5;
+  font-size: 12px;
+  // text-align: left;
 }
 
 @keyframes pulse-border {

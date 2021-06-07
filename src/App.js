@@ -35,7 +35,7 @@ function App() {
   const jumpanimaction = (step, d = false) => {
     if (d) setisPlaying(false);
     setcurentStep(step);
-    console.log(step, Boardm);
+    // console.log(step, Boardm);
     if (animactionSteps.length > step) {
       setBoardm(animactionSteps[step]);
       setTimeout(() => {
@@ -61,18 +61,27 @@ function App() {
   // }
 
   const randomealgo = (queen) => {
-    console.log(queen);
+    // console.log(queen);
     const updateSteps = (steps) => {
-      console.log(steps);
+      // console.log(steps);
       setbordUpdates((state) => ({ ...state, steps }));
     };
     // console.log("Size:", size);
     updateSteps(playAlgo([queen], 0, size));
   };
+  const algoReset = () => {
+    // console.log(queen);
+    const updateSteps = (steps) => {
+      // console.log(steps);
+      setbordUpdates((state) => ({ ...state, steps }));
+    };
+    // console.log("Size:", size);
+    updateSteps(playAlgo([], 0, size));
+  };
 
   useEffect(() => {
     const updateSteps = (steps) => {
-      console.log(steps);
+      // console.log(steps);
       setbordUpdates((state) => ({ ...state, steps }));
     };
     // console.log("Size:", size);
@@ -107,7 +116,7 @@ function App() {
             );
           } else {
             setisPlaying(false);
-            return state;
+            return state - 1;
           }
           return state + 1;
         });
@@ -123,7 +132,7 @@ function App() {
   }, [curentStep]);
   useEffect(() => {
     if (bordUpdates.steps.length !== 0) {
-      console.log(bordUpdates.steps);
+      // console.log(bordUpdates.steps);
       const inibord = [...Array(size * size).keys()].map((e) => ({
         index: e,
         isQuein: false,
@@ -138,7 +147,7 @@ function App() {
         };
         animatedsteps.push(tempBoard);
       });
-      console.log(animatedsteps);
+      // console.log(animatedsteps);
       setanimactionSteps(animatedsteps);
     }
   }, [bordUpdates.steps, setanimactionSteps, size]);
@@ -166,6 +175,9 @@ function App() {
         setspeed={setspeed}
         setsize={setsize}
         randomealgo={randomealgo}
+        Boardm={Boardm}
+        stepsA={bordUpdates.steps.steps}
+        algoReset={algoReset}
       />
     </div>
   );

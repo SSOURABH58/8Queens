@@ -60,7 +60,7 @@ const placeQueens = (Queens, y, size, PrvQueen = new Array(size).fill([])) => {
       return placeQueens(queens, y + 1, size, PrvQueen);
     else {
       PrvQueen.pop();
-      console.log([...queens], [...PrvQueen], y);
+      // console.log([...queens], [...PrvQueen], y);
       if (y > 0) {
         PrvQueen[y - 1].push(...queens.splice(y - 1, 1));
         // console.log(...queens);

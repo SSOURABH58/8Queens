@@ -83,6 +83,7 @@
   .queen {
     display: block;
     opacity: 1;
+    // padding: 55px;
   }
   animation: checkQTrue 800ms forwards;
 }
@@ -91,6 +92,10 @@
   position: absolute;
   margin: auto;
   // size: 80%;
+}
+
+.smalernum {
+  font-size: 10px;
 }
 
 @keyframes checkQTrue {

@@ -92,10 +92,10 @@ export default function Board({ size, setBoard, Board, isManval }) {
           }}
         >
           <div className={styles.queen}>
-            <FaChessQueen size={40} />
+            <FaChessQueen size={350 / size} />
           </div>
 
-          <p>{ele.index}</p>
+          <p className={size > 10 ? styles.smalernum : ""}>{ele.index}</p>
         </div>
       ))}
     </div>
