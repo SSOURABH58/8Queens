@@ -48,7 +48,9 @@ export default function Dashbord({
             <p>{maxrange - 1 - curentStep}</p>
             <p>
               <span className={styles.title}>Tile</span>{" "}
-              {stepsA && stepsA[curentStep] && stepsA[curentStep].block}
+              {stepsA &&
+                stepsA[curentStep] &&
+                stepsA[curentStep ? curentStep - 1 : curentStep].block}
             </p>
             <p>
               <span className={styles.title}>Aimed by</span>{" "}

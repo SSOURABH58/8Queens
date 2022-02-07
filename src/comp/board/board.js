@@ -3,7 +3,14 @@ import styles from "./board.module.scss";
 import { isinvincible } from "./../../logic/nQueenAlgo.js";
 import { FaChessQueen } from "react-icons/fa";
 
-export default function Board({ size, setBoard, Board, isManval }) {
+export default function Board({
+  size,
+  setBoard,
+  Board,
+  isManval,
+  stepsA,
+  curentStep,
+}) {
   const boardRef = useRef({});
 
   const [Queens, setQueens] = useState([]);
@@ -85,7 +92,15 @@ export default function Board({ size, setBoard, Board, isManval }) {
               ? styles.oddBlock
               : styles.evenBlock
           } ${ele.isQuein ? styles.quineBlock : ""} ${
+            // } ${ele.isQuein ? styles.killer : ""} ${
             ele.isVincible ? styles.queenPlaceFaild : ""
+          } ${ele.isKiller ? styles.killer : ""}
+          ${
+            stepsA &&
+            stepsA[curentStep] &&
+            stepsA[curentStep ? curentStep - 1 : curentStep].block === ele.index
+              ? styles.selected
+              : ""
           }`}
           onClick={() => {
             if (isManval) return addQueen(ele);

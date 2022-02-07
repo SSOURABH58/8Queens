@@ -112,7 +112,7 @@ function App() {
                   return [...tempBoard];
                 });
               },
-              speed > 450 ? 800 : 800 - speed
+              speed > 450 ? 500 : 500 - speed
             );
           } else {
             setisPlaying(false);
@@ -145,9 +145,15 @@ function App() {
           isQuein: step.isinvincible,
           isVincible: !step.isinvincible,
         };
+        // console.log(step.killers.includes(0));
+        tempBoard = tempBoard.map((tile) =>
+          step.killers.includes(tile.index)
+            ? { ...tile, isKiller: true }
+            : { ...tile, isKiller: false }
+        );
         animatedsteps.push(tempBoard);
       });
-      // console.log(animatedsteps);
+      console.log(animatedsteps);
       setanimactionSteps(animatedsteps);
     }
   }, [bordUpdates.steps, setanimactionSteps, size]);
@@ -159,6 +165,8 @@ function App() {
         isManval={isManval}
         Board={Boardm}
         setBoard={setBoardm}
+        stepsA={bordUpdates.steps.steps}
+        curentStep={curentStep}
       />
       <Dashbord
         size={size}
